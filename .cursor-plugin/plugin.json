@@ -1,0 +1,11 @@
+{
+  "name": "jstack",
+  "displayName": "Jstack",
+  "version": "0.1.0",
+  "description": "Cursor plugin skeleton.",
+  "author": {
+    "name": "jack-110"
+  },
+  "repository": "https://github.com/jack-110/jstack",
+  "keywords": ["cursor", "plugin"]
+}
