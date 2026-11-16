@@ -1,6 +1,6 @@
 # jstack
 
-Cursor plugin skeleton. The manifest is in `.cursor-plugin/`, and `skills/flow-chart/` is the copied local skill. Add other component files under the directories below when you are ready. Names are lowercase kebab-case.
+Cursor plugin skeleton. The manifest is in `.cursor-plugin/`. Skills live under `skills/`: `flow-chart/`, `technical-writing/`, and `socratic-tutor/`. Add other component files under the directories below when you are ready. Names are lowercase kebab-case.
 
 ## Layout
 
@@ -10,8 +10,12 @@ jstack/
 │   └── plugin.json          # Manifest. `name` is required.
 ├── rules/                   # Add *.mdc here
 ├── skills/
-│   └── flow-chart/
-│       └── SKILL.md         # Flow chart skill
+│   ├── flow-chart/
+│   │   └── SKILL.md         # Flow chart skill
+│   ├── technical-writing/
+│   │   └── SKILL.md         # Technical writing skill
+│   └── socratic-tutor/
+│       └── SKILL.md         # Socratic tutor skill
 ├── agents/                  # Add *.md here
 ├── commands/                # Add *.md here
 └── README.md
