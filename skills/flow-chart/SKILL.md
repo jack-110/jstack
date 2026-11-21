@@ -7,7 +7,7 @@ description: Generate a Mermaid sequenceDiagram from code at a High, Medium, or 
 
 ## Detail level
 
-Ask the user which detail level to use before tracing code or drawing. Use the AskQuestion tool. Do not draw until the user answers. If the request already names High Level, Medium Level, or Low Level, use that level and do not ask again.
+Ask the user which detail level to use before tracing code or drawing. Use the AskQuestion tool when the host provides it. Otherwise ask in the reply and stop until the user answers. Do not draw until the user answers. If the request already names High Level, Medium Level, or Low Level, use that level and do not ask again.
 
 - **High Level**: Only interactions between running applications and MQ
 - **Medium Level**: service level interactions and important steps in each service

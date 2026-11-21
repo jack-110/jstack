@@ -1,0 +1,30 @@
+{
+  "name": "jstack",
+  "version": "0.1.0",
+  "description": "Sequence diagrams, technical writing, and Socratic tutoring for a repository.",
+  "author": {
+    "name": "jack-110",
+    "url": "https://github.com/jack-110"
+  },
+  "repository": "https://github.com/jack-110/jstack",
+  "keywords": ["skills", "sequence-diagram", "technical-writing", "tutoring"],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Jstack",
+    "shortDescription": "Diagrams, docs, and tutoring",
+    "longDescription": "Jstack packages three skills for engineers working in a repository. Flow Chart draws a Mermaid sequence diagram from the call chain at high, medium, or low detail. Technical writing applies a layered standard to docs, RFCs, READMEs, pull request descriptions, and commit messages, and runs only when you invoke it. Socratic Tutor teaches a topic by questioning, with a skill map and a final assessment, and starts only when you ask to be taught or drilled. The skills read the repository and write diagrams or prose in the conversation. They do not call external services.",
+    "developerName": "jack-110",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Sequence diagrams",
+      "Technical writing",
+      "Socratic tutoring"
+    ],
+    "websiteURL": "https://github.com/jack-110/jstack",
+    "defaultPrompt": [
+      "Draw a sequence diagram for this API.",
+      "Rewrite this doc so a tired engineer can read it.",
+      "Teach me this topic until I can do it on my own."
+    ]
+  }
+}

@@ -1,23 +1,23 @@
 # jstack
 
-Cursor plugin skeleton. The manifest is in `.cursor-plugin/`. Skills live under `skills/`: `flow-chart/`, `technical-writing/`, and `socratic-tutor/`. Add other component files under the directories below when you are ready. Names are lowercase kebab-case.
+Plugin for Cursor and Codex. Cursor reads `.cursor-plugin/`. Codex reads `.codex-plugin/`. Both hosts use the same `skills/` directory: `flow-chart/`, `technical-writing/`, and `socratic-tutor/`. Add other component files under the directories below when you are ready. Names are lowercase kebab-case.
 
 ## Layout
 
 ```text
 jstack/
 ├── .cursor-plugin/
-│   └── plugin.json          # Manifest. `name` is required.
-├── rules/                   # Add *.mdc here
+│   └── plugin.json          # Cursor manifest. `name` is required.
+├── .codex-plugin/
+│   └── plugin.json          # Codex manifest. Points at ./skills/.
 ├── skills/
 │   ├── flow-chart/
 │   │   └── SKILL.md         # Flow chart skill
 │   ├── technical-writing/
-│   │   └── SKILL.md         # Technical writing skill
+│   │   ├── SKILL.md         # Technical writing skill
+│   │   └── agents/openai.yaml
 │   └── socratic-tutor/
 │       └── SKILL.md         # Socratic tutor skill
-├── agents/                  # Add *.md here
-├── commands/                # Add *.md here
 └── README.md
 ```
 
@@ -143,3 +143,18 @@ rsync -a --delete --exclude .git ./ ~/.cursor/plugins/local/jstack/
 Reload the window, then open Customize. Components appear there after you add their files. On Enterprise, local imports also require Allow Local Plugin Imports under Dashboard → Settings → Security & Identity → Marketplace and Plugins.
 
 Publish from a public git repository at [cursor.com/marketplace/publish](https://cursor.com/marketplace/publish) when the plugin has real behavior. For several plugins in one repo, add `.cursor-plugin/marketplace.json` at the repository root and move this plugin into its own directory.
+
+## Load it in Codex
+
+`.codex-plugin/plugin.json` is the Codex manifest. It points `skills` at `./skills/`, so Codex loads the same three skills Cursor does. `technical-writing` stays explicit-only: Cursor reads `disable-model-invocation` in `SKILL.md`, and Codex reads `policy.allow_implicit_invocation: false` in `skills/technical-writing/agents/openai.yaml`. Invoke that skill as `$technical-writing`.
+
+Install it into the user Codex home, not this repo. The copy is what Codex loads when you open another directory. From the repo root:
+
+```bash
+mkdir -p ~/.codex/local-marketplaces/personal/plugins
+rsync -a --delete --exclude .git ./ ~/.codex/local-marketplaces/personal/plugins/jstack/
+codex plugin marketplace add ~/.codex/local-marketplaces/personal
+codex plugin add jstack@personal
+```
+
+The marketplace catalog for that install lives at `~/.codex/local-marketplaces/personal/.agents/plugins/marketplace.json`. After you change a skill here, run the `rsync` again and restart Codex. In any thread, ask for a sequence diagram or a tutoring session, or invoke a skill by name: `$flow-chart`, `$technical-writing`, `$socratic-tutor`.

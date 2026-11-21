@@ -1,0 +1,6 @@
+interface:
+  display_name: "Technical writing"
+  short_description: "Review docs, RFCs, and PR text"
+  default_prompt: "Use $technical-writing to review this README."
+policy:
+  allow_implicit_invocation: false
